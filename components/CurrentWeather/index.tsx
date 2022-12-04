@@ -3,13 +3,15 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-
 import Typography from '@mui/material/Typography';
-import { minWidth } from "@mui/system";
+import { ICurentWeather } from "../../models";
 
 
 
-const CurrentWeather = ({ data }: any) => {
+const CurrentWeather = ({ data }: ICurentWeather) => {
+
+	const description = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)
+
 	return (
 		<Card sx={{
 			margin: '20px auto',
@@ -30,41 +32,41 @@ const CurrentWeather = ({ data }: any) => {
 					flex: '1 0 auto'
 				}}>
 					<Typography component="div" variant="h6">
-						Rava-Ruska, UA
+						{data.city}
 					</Typography>
 					<Typography variant="subtitle1" component="div">
-						Sunny
+						{description}
 					</Typography>
 				</CardContent>
 				<Box>
 					<CardMedia
 						component="img"
 						sx={{ width: '100% ' }}
-						image="/icons/01d.png"
+						image={`/icons/${data.weather[0].icon}.png`}
 						alt="Live from space album cover"
 					/>
 				</Box>
 
 			</Box>
-			<Box sx={{ padding: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', pl: 1, pb: 1 }}>
+			<Box sx={{ p: 1, pl: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 				<Typography component="div" variant="h2">
-					18°C
+					{Math.round(data.main.temp)}°C
 				</Typography>
 				<Box sx={{ fontSize: '12px', width: '100%', padding: '0 16px 0 32px' }}>
 					<Typography component="p" >
 						Details
 					</Typography>
 					<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-						Feels like <b>22°C</b>
+						Feels like <b>{Math.round(data.main.feels_like)}°C</b>
 					</Typography>
 					<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-						Wind <b>2 m/s</b>
+						Wind <b>{data.wind.speed} m/s</b>
 					</Typography>
 					<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-						Humidity <b>15%</b>
+						Humidity <b>{data.main.humidity}%</b>
 					</Typography>
 					<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-						Pressure <b>15hPa</b>
+						Pressure <b>{data.main.pressure}hPa</b>
 					</Typography>
 
 				</Box>
