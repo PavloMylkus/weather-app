@@ -15,9 +15,8 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 	return (
 		<Card sx={{
 			margin: '20px auto',
-			background: '#333',
+			background: '#2684ff',
 			color: "white",
-			maxWidth: 400,
 			display: 'flex',
 			justifyContent: 'space-between',
 			flexDirection: 'column'
@@ -31,8 +30,8 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 				<CardContent sx={{
 					flex: '1 0 auto'
 				}}>
-					<Typography component="div" variant="h6">
-						{data.city}
+					<Typography component="div" variant="h5">
+						<b>{data.city}</b>
 					</Typography>
 					<Typography variant="subtitle1" component="div">
 						{description}
@@ -48,11 +47,16 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 				</Box>
 
 			</Box>
-			<Box sx={{ p: 1, pl: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+			<Box sx={{ textShadow: '0 0 5px #17243280', p: 1, pl: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 				<Typography component="div" variant="h2">
-					{Math.round(data.main.temp)}°C
+					<b>{Math.round(data.main.temp)}°C</b>
 				</Typography>
-				<Box sx={{ fontSize: '12px', width: '100%', padding: '0 16px 0 32px' }}>
+				<Box
+					sx={{
+						fontSize: '12px',
+						minWidth: { xs: '180px', sm: '220px', md: '230', lg: '240px' },
+						padding: '0 16px 0 32px'
+					}}>
 					<Typography component="p" >
 						Details
 					</Typography>
