@@ -7,6 +7,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import { IList } from "../../models";
+import Grid from '@mui/material/Grid';
+import { WEEK_DAYS_ENG } from "../../const";
+import Tooltip from '@mui/material/Tooltip';
 
 type Props = {
 	day: any;
@@ -14,7 +17,7 @@ type Props = {
 };
 
 const ForecastForDays: React.FC<Props> = ({ data, day }) => {
-	const WEEK_DAYS_ENG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
 
 	const Image = styled('img')(() => ({
 		maxWidth: '50px'
@@ -33,23 +36,58 @@ const ForecastForDays: React.FC<Props> = ({ data, day }) => {
 				</AccordionSummary>
 				<AccordionDetails>
 					{data.map((item, idx) => {
+						const description = item.weather[0].description.charAt(0).toUpperCase() + item.weather[0].description.slice(1)
 						if (new Date(item.dt_txt.split(' ')[0]).getDay() === day) {
 							return (
-								<Box key={idx + 1000}>
-									<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-										<Typography >
-											{item.dt_txt.split(' ')[1]}
-										</Typography>
-										<Typography >
-											{item.weather[0].description}
-										</Typography>
-										<Image src={`/icons/${item.weather[0].icon}.png`} alt="" />
-										<Typography >
-											<b>{Math.round(item.main.temp)}°C</b>
-										</Typography>
-									</Box>
+
+								<Box
+									key={idx + 1000}
+									sx={{
+										display: 'flex',
+										flexDirection: 'row',
+										alignItems: 'center',
+										justifyContent: 'space-between',
+
+									}}>
+									<Grid sx={{ alignItems: 'center' }} container spacing={3}>
+										<Grid item xs>
+											{/* time */}
+											<Typography >
+												{item.dt_txt.split(' ')[1].slice(0, -3)}
+											</Typography>
+										</Grid>
+										<Grid item xs>
+											<Typography >
+												{description}
+											</Typography>
+										</Grid>
+										<Grid item xs>
+											<Image src={`/action/icons/${item.weather[0].icon}.png`} alt="weather" />
+										</Grid>
+										<Grid item xs>
+											<Tooltip
+												title={`Feels like ${Math.round(item.main.feels_like)}°C `}
+												arrow
+												placement="top-start"
+												sx={{ cursor: 'pointer' }}>
+												<Typography >
+													<b>{Math.round(item.main.temp)}°C</b>
+												</Typography>
+											</Tooltip>
+										</Grid>
+										<Grid item xs>
+											<Typography >
+												Wind  <b>{item.wind.speed} m/s</b>
+											</Typography>
+										</Grid>
+									</Grid>
+
+
+
 
 								</Box>
+
+
 
 							)
 						} else undefined

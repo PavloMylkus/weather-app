@@ -16,7 +16,7 @@ const Forecast = ({ data }: IForecast) => {
 		return dayInWeek
 	})
 	const daysForecast = Array.from(new Set(forecast));
-	console.log(daysForecast);
+
 
 
 	const list = daysForecast.map((item, idx) => {
@@ -25,24 +25,19 @@ const Forecast = ({ data }: IForecast) => {
 				<ForecastForDays
 					data={data.list}
 					day={item} />
-			</Box>
+			</Box >
 
 		)
 	})
 
 	return (
 		<>
-
 			<Paper elevation={3} >
-				<Typography component="h3" variant="h5">
+				<Typography sx={{ padding: 2, borderBottom: '1px solid grey' }} component="h3" variant="h5">
 					Daily forecast
 				</Typography>
-
 				{list}
-
-
 			</Paper>
-
 		</>
 	)
 };
