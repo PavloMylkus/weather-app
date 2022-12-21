@@ -1,6 +1,5 @@
-import React, { useState, HTMLInputTypeAttribute } from "react"
+import React, { useState } from "react"
 import { AsyncPaginate } from "react-select-async-paginate";
-import { OptionalTypeNode } from "typescript";
 import { GEO_API_URL, geoApiOptions } from "../../pages/api/api";
 
 
@@ -9,7 +8,9 @@ const Search = ({ onSearchChange }: any) => {
 
 
 	const loadOptions = (inputValue: string) => {
-		return new Promise((resolve) => {
+		console.log(typeof (inputValue));
+
+		return new Promise<any>((resolve) => {
 			setTimeout(() => {
 				const response = fetch(
 					`${GEO_API_URL}/cities?minPopulation=100&namePrefix=${inputValue}`,
@@ -27,7 +28,8 @@ const Search = ({ onSearchChange }: any) => {
 					})
 
 				resolve(response);
-			}, 600);
+
+			}, 700);
 		});
 	};
 
