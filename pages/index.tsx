@@ -6,12 +6,15 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { Box, Typography, LinearProgress } from "@mui/material";
 import { useSearch } from "../hooks/useSearch";
 
-export interface ISearchData {
-	label: string
-	value: string
+
+
+interface ILocaleProps {
+	locale: string
 }
 
+
 const Home = () => {
+
 	const { handleOnSearch, forecast, currentWeather, loading } = useSearch()
 
 	return (

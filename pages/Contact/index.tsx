@@ -10,13 +10,13 @@ const About = () => {
 		color: 'blue'
 	}));
 	const BoxContainer = styled(Box)(() => ({
-		'&:nth-child(n+2)': {
+		'&:nth-of-type(n+2)': {
 			marginTop: 16
 		}
 	}));
 
 	return (
-		<Box sx={{ marginTop: 9 }}>
+		<Box sx={{ marginTop: 12 }}>
 			<Paper sx={{ padding: 2 }}>
 				<BoxContainer>
 					<Typography component='h1' variant="h6">Contact us</Typography>

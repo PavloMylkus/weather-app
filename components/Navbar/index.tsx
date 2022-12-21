@@ -12,12 +12,12 @@ import {
 	ListItemText,
 	Toolbar,
 	Typography,
-	Button
+	Button,
+	MenuItem,
+	Select
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from "next/link";
-
-
 
 
 
@@ -28,6 +28,7 @@ const drawerWidth = 240;
 
 const Navbar = (props: Props) => {
 
+
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -37,28 +38,28 @@ const Navbar = (props: Props) => {
 	const drawer = (
 		<Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
 			<Typography variant="h6" sx={{ my: 2 }}>
-				MyForecast
+				<Link href='/'>MyForecast</Link>
 			</Typography>
 			<Divider />
 			<List>
 				<ListItem disablePadding>
 					<ListItemButton sx={{ textAlign: 'center' }}>
 						<Link href='/'>
-							<ListItemText primary='Home' />
+							<ListItemText primary='home' />
 						</Link>
 					</ListItemButton>
 				</ListItem>
 				<ListItem disablePadding>
 					<ListItemButton sx={{ textAlign: 'center' }}>
 						<Link href='/About'>
-							<ListItemText primary='About' />
+							<ListItemText primary='{t.navigation.about}' />
 						</Link>
 					</ListItemButton>
 				</ListItem>
 				<ListItem disablePadding>
 					<ListItemButton sx={{ textAlign: 'center' }}>
 						<Link href='/Contact'>
-							<ListItemText primary='Contact' />
+							<ListItemText primary='{t.navigation.contact}' />
 						</Link>
 					</ListItemButton>
 				</ListItem>
@@ -89,26 +90,32 @@ const Navbar = (props: Props) => {
 						component="div"
 						sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
 					>
-						MyForecast
+						<Link href='/'>MyForecast</Link>
 					</Typography>
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+
 						<Link href='/'>
 							<Button sx={{ color: '#fff' }}>
-								Home
+								home
 							</Button>
 						</Link>
 
 						<Link href='/About'>
 							<Button sx={{ color: '#fff' }}>
-								About
+								about
 							</Button>
 						</Link>
 
 						<Link href='/Contact'>
 							<Button sx={{ color: '#fff' }}>
-								Contact
+								contact
 							</Button>
 						</Link>
+						<select
+						>
+							<option value='en'>EN</option>
+							<option value='uk'>UA</option>
+						</select>
 					</Box>
 				</Toolbar>
 			</AppBar>

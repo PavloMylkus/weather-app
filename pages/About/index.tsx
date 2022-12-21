@@ -1,24 +1,29 @@
 import { Box, Paper, Typography } from "@mui/material";
 import React from "react"
 import { styled } from '@mui/material/styles';
-
+import { useRouter } from "next/router";
+import uk from "../../i18n/uk";
+import en from "../../i18n/en";
 
 const About = () => {
+	const router = useRouter();
+	const { locale } = router;
+	const t = locale === 'uk' ? uk : en
 
 	const Links = styled('a')(() => ({
 		color: 'blue'
 	}));
 	const BoxContainer = styled(Box)(() => ({
-		'&:nth-child(n+2)': {
+		'&:nth-of-type(n+2)': {
 			marginTop: 16
 		}
 	}));
 
 	return (
-		<Box sx={{ marginTop: 9 }}>
+		<Box sx={{ marginTop: 12 }}>
 			<Paper sx={{ padding: 2 }}>
 				<BoxContainer>
-					<Typography component='h1' variant="h6">About the MyForecast site</Typography>
+					<Typography component='h1' variant="h6">{t.about.title}</Typography>
 					<Typography>
 						MyForecast is a forecast that we use ourselves.
 						This is an attempt to make the most up-to-date and detailed weather forecast that would be convenient for users of all devices.
