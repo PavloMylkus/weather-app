@@ -1,15 +1,10 @@
 import { Box, Paper, Typography } from "@mui/material";
 import React from "react"
 import { styled } from '@mui/material/styles';
-import { useRouter } from "next/router";
-import uk from "../../i18n/uk";
-import en from "../../i18n/en";
+import { useLocale } from "../../hooks/useLocale";
 
 const About = () => {
-	const router = useRouter();
-	const { locale } = router;
-	const t = locale === 'uk' ? uk : en
-
+	const { t } = useLocale()
 	const Links = styled('a')(() => ({
 		color: 'blue'
 	}));
@@ -23,30 +18,29 @@ const About = () => {
 		<Box sx={{ marginTop: 12 }}>
 			<Paper sx={{ padding: 2 }}>
 				<BoxContainer>
-					<Typography component='h1' variant="h6">{t.about.title}</Typography>
+					<Typography component='h1' variant="h6">{t.about.title1}</Typography>
 					<Typography>
-						MyForecast is a forecast that we use ourselves.
-						This is an attempt to make the most up-to-date and detailed weather forecast that would be convenient for users of all devices.
-						And supplement it with statistical data on the climate of cities and countries, water temperature,
-						tourist seasons for convenience in travel. Send all wishes and comments regarding the website to <Links href="mailto: ppavlo82@gmail.com">ppavlo82@gmail.com</Links>,
-						we will be glad to hear your opinion.
+						{t.about.description1.before}
+						<Links href="mailto: ppavlo82@gmail.com">ppavlo82@gmail.com</Links>
+						{t.about.description1.after}
 					</Typography>
 				</BoxContainer>
 				<BoxContainer >
 					<Typography component='h3' variant="h6">
-						Where do we get our weather data from?
+						{t.about.title2}
 					</Typography>
 					<Typography>
-						Forecasts are based on data from <Links href="https://openweathermap.org/">https://openweathermap.org/</Links><br />
-						Forecasts are updated every hour.
+						{t.about.description2.before}
+						<Links href="https://openweathermap.org/">https://openweathermap.org/</Links><br />
+						{t.about.description2.after}
 					</Typography>
 				</BoxContainer>
 				<BoxContainer >
 					<Typography component='h3' variant="h6">
-						Advertising on the MyForecast website
+						{t.about.title3}
 					</Typography>
 					<Typography>
-						Currently, advertising on the MyForecast website is placed only through the Google Ads system.
+						{t.about.description3}
 					</Typography>
 				</BoxContainer>
 			</Paper>

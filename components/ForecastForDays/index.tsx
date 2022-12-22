@@ -8,8 +8,9 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import { IList } from "../../models";
 import Grid from '@mui/material/Grid';
-import { WEEK_DAYS_ENG } from "../../const";
+import { WEEK_DAYS_ENG, WEEK_DAYS_UKR } from "../../const";
 import Tooltip from '@mui/material/Tooltip';
+import { useLocale } from "../../hooks/useLocale";
 
 type Props = {
 	day: any;
@@ -17,7 +18,8 @@ type Props = {
 };
 
 const ForecastForDays: React.FC<Props> = ({ data, day }) => {
-
+	const { t, locale } = useLocale()
+	const weekLocale = locale === "uk" ? WEEK_DAYS_UKR : WEEK_DAYS_ENG;
 
 	const Image = styled('img')(() => ({
 		maxWidth: '50px'
@@ -31,7 +33,7 @@ const ForecastForDays: React.FC<Props> = ({ data, day }) => {
 					aria-controls="panel1a-content"
 					id='f'
 				>
-					<Typography component="h3" variant="h6">{WEEK_DAYS_ENG[day]}</Typography>
+					<Typography component="h3" variant="h6">{weekLocale[day]}</Typography>
 
 				</AccordionSummary>
 				<AccordionDetails>
@@ -77,7 +79,7 @@ const ForecastForDays: React.FC<Props> = ({ data, day }) => {
 										</Grid>
 										<Grid item xs>
 											<Typography >
-												Wind  <b>{item.wind.speed} m/s</b>
+												{t.forecast.wind}  <b>{item.wind.speed} m/s</b>
 											</Typography>
 										</Grid>
 									</Grid>

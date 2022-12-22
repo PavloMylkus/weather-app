@@ -18,6 +18,8 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from "next/link";
+import { useLocale } from "../../hooks/useLocale";
+
 
 
 
@@ -27,6 +29,7 @@ interface Props {
 const drawerWidth = 240;
 
 const Navbar = (props: Props) => {
+	const { t, handleLocaleChange, router } = useLocale();
 
 
 	const { window } = props;
@@ -45,21 +48,21 @@ const Navbar = (props: Props) => {
 				<ListItem disablePadding>
 					<ListItemButton sx={{ textAlign: 'center' }}>
 						<Link href='/'>
-							<ListItemText primary='home' />
+							<ListItemText primary={t.navigation.home} />
 						</Link>
 					</ListItemButton>
 				</ListItem>
 				<ListItem disablePadding>
 					<ListItemButton sx={{ textAlign: 'center' }}>
 						<Link href='/About'>
-							<ListItemText primary='{t.navigation.about}' />
+							<ListItemText primary={t.navigation.about} />
 						</Link>
 					</ListItemButton>
 				</ListItem>
 				<ListItem disablePadding>
 					<ListItemButton sx={{ textAlign: 'center' }}>
 						<Link href='/Contact'>
-							<ListItemText primary='{t.navigation.contact}' />
+							<ListItemText primary={t.navigation.contact} />
 						</Link>
 					</ListItemButton>
 				</ListItem>
@@ -88,7 +91,7 @@ const Navbar = (props: Props) => {
 					<Typography
 						variant="h6"
 						component="div"
-						sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+						sx={{ flexGrow: 1, display: { sm: 'block' } }}
 					>
 						<Link href='/'>MyForecast</Link>
 					</Typography>
@@ -96,27 +99,29 @@ const Navbar = (props: Props) => {
 
 						<Link href='/'>
 							<Button sx={{ color: '#fff' }}>
-								home
+								{t.navigation.home}
 							</Button>
 						</Link>
 
 						<Link href='/About'>
 							<Button sx={{ color: '#fff' }}>
-								about
+								{t.navigation.about}
 							</Button>
 						</Link>
 
 						<Link href='/Contact'>
 							<Button sx={{ color: '#fff' }}>
-								contact
+								{t.navigation.contact}
 							</Button>
 						</Link>
-						<select
-						>
-							<option value='en'>EN</option>
-							<option value='uk'>UA</option>
-						</select>
+
 					</Box>
+					<select
+						onChange={handleLocaleChange} value={router.locale}
+					>
+						<option value='en'>EN</option>
+						<option value='uk'>UA</option>
+					</select>
 				</Toolbar>
 			</AppBar>
 			<Box component="nav">

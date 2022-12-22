@@ -4,18 +4,14 @@ import Forecast from "../components/Forecast";
 import Search from "../components/Search";
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { Box, Typography, LinearProgress } from "@mui/material";
-import { useSearch } from "../hooks/useSearch";
+import { useSearchData } from "../hooks/useSearchData";
 
-
-
-interface ILocaleProps {
-	locale: string
-}
+import { useLocale } from "../hooks/useLocale";
 
 
 const Home = () => {
-
-	const { handleOnSearch, forecast, currentWeather, loading } = useSearch()
+	const { t } = useLocale()
+	const { handleOnSearch, forecast, currentWeather, loading } = useSearchData()
 
 	return (
 		<Box sx={{ marginTop: 8, marginBottom: 4 }}>
@@ -26,7 +22,7 @@ const Home = () => {
 			}
 			{!currentWeather && !forecast && !loading && <Box sx={{ color: 'gray', textAlign: 'center', marginTop: 8 }}>
 				<TravelExploreIcon sx={{ fontSize: 180 }} />
-				<Typography variant="h3">Search your city</Typography>
+				<Typography variant="h3">{t.home.search_hint} </Typography>
 			</Box>}
 			{currentWeather && <CurrentWeather data={currentWeather} />}
 			{forecast && <Forecast data={forecast} />}

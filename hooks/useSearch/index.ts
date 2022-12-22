@@ -1,39 +1,47 @@
-import { useState } from "react";
-import { WEATHER_API_KEY, WEATHER_API_URL } from "../../pages/api/api.js";
-
-export interface ISearchData {
-	label: string
-	value: string
-}
-
-export const useSearch = () => {
-	const [currentWeather, setCurrentWeather] = useState(null)
-	const [forecast, setForecast] = useState(null)
-	const [loading, setLoading] = useState(false)
+import React, { useState } from "react"
+import { GEO_API_URL, geoApiOptions } from "../../pages/api/api";
+import { useRouter } from "next/router";
 
 
-	const handleOnSearch = (searchData: ISearchData) => {
-		const [lat, lon] = searchData.value.split(" ");
-		setLoading(true)
-		const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
-		const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
+export const useSearch = (onSearchChange: any) => {
+	const [search, setSearch] = useState(null)
+	const router = useRouter();
+	const { locale } = router;
+	const loc = locale === 'en' ? 'en' : 'ru';
 
-		Promise.all([currentWeatherFetch, forecastFetch])
-			.then(async (response) => {
-				const weatherResponse = await response[0].json();
-				const forecastResponse = await response[1].json();
+	const loadOptions = (inputValue: string) => {
+		return new Promise<any>((resolve) => {
+			setTimeout(() => {
+				const response = fetch(
+					`${GEO_API_URL}/cities?minPopulation=100&namePrefix=${inputValue}&languageCode=${loc}`,
+					geoApiOptions)
+					.then(response => response.json())
+					.then(response => {
+						return {
+							options: response.data.map((city: any) => {
+								return {
+									value: `${city.latitude} ${city.longitude}`,
+									label: `${city.name}, ${city.countryCode}`
+								}
+							})
+						}
+					})
 
-				setCurrentWeather({ city: searchData.label, ...weatherResponse });
-				setForecast({ city: searchData.label, ...forecastResponse })
-				setLoading(false)
-			})
-			.catch((err) => console.log(err))
+				resolve(response);
 
+			}, 700);
+		});
+	};
+
+
+
+	const handleOnChange = (searchData: any) => {
+		setSearch(searchData);
+		onSearchChange(searchData)
 	}
 	return {
-		handleOnSearch,
-		currentWeather,
-		forecast,
-		loading
+		handleOnChange,
+		loadOptions,
+		search
 	}
 }

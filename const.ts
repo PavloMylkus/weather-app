@@ -8,4 +8,14 @@ export const WEEK_DAYS_ENG =
 		'Friday',
 		'Saturday'
 	];
+export const WEEK_DAYS_UKR =
+	[
+		'Неділя',
+		'Понеділок',
+		'Вівторок',
+		'Середа',
+		'Четвер',
+		"П'ятниця",
+		'Субота'
+	];
 

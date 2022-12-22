@@ -5,12 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { ICurentWeather } from "../../models";
-import { WEEK_DAYS_ENG } from "../../const";
+import { WEEK_DAYS_ENG, WEEK_DAYS_UKR } from "../../const";
 import { styled } from '@mui/material/styles';
+import { useLocale } from "../../hooks/useLocale";
 
 
 const CurrentWeather = ({ data }: ICurentWeather) => {
-	const currentDay = new Date(data.dt * 1000).getDay()
+	const { t, locale } = useLocale();
+	const weekLocale = locale === "uk" ? WEEK_DAYS_UKR : WEEK_DAYS_ENG;
+	const currentDay = new Date(data.dt * 1000).getDay();
 	const description = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)
 
 	const CardCurrentWeather = styled(Card)(() => ({
@@ -37,7 +40,7 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 						flex: '1 0 auto'
 					}}>
 						<Typography component="span" variant="subtitle1">
-							{WEEK_DAYS_ENG[currentDay]}
+							{weekLocale[currentDay]}
 						</Typography>
 						<Typography component="div" variant="h5">
 							<b>{data.city}</b>
@@ -62,24 +65,24 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 					</Typography>
 					<Box
 						sx={{
-							fontSize: '12px',
+							fontSize: '14px',
 							minWidth: { xs: '180px', sm: '220px', md: '230', lg: '240px' },
 							padding: '0 16px 0 32px'
 						}}>
 						<Typography component="p" >
-							Details
+							{t.current_weather.details}
 						</Typography>
 						<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-							Feels like <b>{Math.round(data.main.feels_like)}°C</b>
+							{t.current_weather.feels_like} <b>{Math.round(data.main.feels_like)}°C</b>
 						</Typography>
 						<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-							Wind <b>{data.wind.speed} m/s</b>
+							{t.current_weather.wind} <b>{data.wind.speed} m/s</b>
 						</Typography>
 						<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-							Humidity <b>{data.main.humidity}%</b>
+							{t.current_weather.humidity} <b>{data.main.humidity}%</b>
 						</Typography>
 						<Typography sx={{ fontSize: 'inherit', display: 'flex', justifyContent: 'space-between' }} component="p" >
-							Pressure <b>{data.main.pressure}hPa</b>
+							{t.current_weather.pressure} <b>{data.main.pressure}hPa</b>
 						</Typography>
 
 					</Box>

@@ -1,50 +1,19 @@
 import React, { useState } from "react"
 import { AsyncPaginate } from "react-select-async-paginate";
-import { GEO_API_URL, geoApiOptions } from "../../pages/api/api";
-
+import { useLocale } from "../../hooks/useLocale";
+import { useSearch } from "../../hooks/useSearch";
 
 const Search = ({ onSearchChange }: any) => {
-	const [search, setSearch] = useState(null)
+	const { t } = useLocale()
+	const { search, handleOnChange, loadOptions } = useSearch(onSearchChange)
 
 
-	const loadOptions = (inputValue: string) => {
-		console.log(typeof (inputValue));
-
-		return new Promise<any>((resolve) => {
-			setTimeout(() => {
-				const response = fetch(
-					`${GEO_API_URL}/cities?minPopulation=100&namePrefix=${inputValue}`,
-					geoApiOptions)
-					.then(response => response.json())
-					.then(response => {
-						return {
-							options: response.data.map((city: any) => {
-								return {
-									value: `${city.latitude} ${city.longitude}`,
-									label: `${city.name}, ${city.countryCode}`
-								}
-							})
-						}
-					})
-
-				resolve(response);
-
-			}, 700);
-		});
-	};
-
-
-
-	const handleOnChange = (searchData: any) => {
-		setSearch(searchData);
-		onSearchChange(searchData)
-	}
 
 	return (
 		<AsyncPaginate
 			id="postType"
 			instanceId="long-value-select"
-			placeholder="Search for city"
+			placeholder={t.home.search_placeholder}
 			debounceTimeout={600}
 			value={search}
 			onChange={handleOnChange}
