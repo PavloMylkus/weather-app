@@ -15,6 +15,7 @@ export const useSearchData = () => {
 	const { locale } = router;
 
 	const handleOnSearch = (searchData: ISearchData) => {
+
 		const [lat, lon] = searchData.value.split(" ");
 		setLoading(true)
 		const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&lang=${locale}&appid=${WEATHER_API_KEY}&units=metric`)

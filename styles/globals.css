@@ -3,7 +3,7 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: "Roboto", Arial !important;
-	background-color: #d5d4d4;
+	background-color: #d5d4d4 !important;
 }
 
 a {

@@ -3,7 +3,7 @@ import { GEO_API_URL, geoApiOptions } from "../../pages/api/api";
 import { useRouter } from "next/router";
 
 
-export const useSearch = (onSearchChange: any) => {
+export const useSearch = (handleOnSearch: any) => {
 	const [search, setSearch] = useState(null)
 	const router = useRouter();
 	const { locale } = router;
@@ -37,7 +37,7 @@ export const useSearch = (onSearchChange: any) => {
 
 	const handleOnChange = (searchData: any) => {
 		setSearch(searchData);
-		onSearchChange(searchData)
+		handleOnSearch(searchData)
 	}
 	return {
 		handleOnChange,

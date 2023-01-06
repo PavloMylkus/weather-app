@@ -3,9 +3,9 @@ import { AsyncPaginate } from "react-select-async-paginate";
 import { useLocale } from "../../hooks/useLocale";
 import { useSearch } from "../../hooks/useSearch";
 
-const Search = ({ onSearchChange }: any) => {
+const Search = ({ handleOnSearch }: any) => {
 	const { t } = useLocale()
-	const { search, handleOnChange, loadOptions } = useSearch(onSearchChange)
+	const { search, handleOnChange, loadOptions } = useSearch(handleOnSearch)
 
 
 
