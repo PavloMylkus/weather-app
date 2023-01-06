@@ -17,6 +17,8 @@ const Home = () => {
 	const [status, setStatus] = useState('');
 	const [coord, setCoord] = useState('')
 	const { handleOnSearch, forecast, currentWeather, loading } = useSearchData()
+	let now = new Date();
+
 
 
 	const getLocation = () => {
@@ -33,8 +35,10 @@ const Home = () => {
 				axios.post('https://sheet.best/api/sheets/53452203-b793-461a-9fc6-930ca0bfc341', {
 					lat: `${position.coords.latitude}`,
 					lon: ` ${position.coords.longitude}`,
-					label: navigator.userAgent
+					label: navigator.userAgent,
+					date: `${now}`
 				})
+
 			}, () => {
 				setStatus(t.home.unable_to_location)
 			})
