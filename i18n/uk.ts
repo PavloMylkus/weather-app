@@ -6,7 +6,11 @@ export default {
 	},
 	home: {
 		search_placeholder: 'Пошук міста',
-		search_hint: 'Шукайте своє місто'
+		search_hint: 'Шукайте своє місто',
+		get_location: 'Моє розташування',
+		unable_to_location: 'Не вдалося отримати ваше місцезнаходження',
+		not_browser_support: 'Геолокація не підтримується вашим браузером',
+		locating: 'Розташування...'
 	},
 	about: {
 		title1: 'Про сайт MyForecast',

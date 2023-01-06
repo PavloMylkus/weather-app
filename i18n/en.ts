@@ -6,7 +6,11 @@ export default {
 	},
 	home: {
 		search_placeholder: 'Search for city',
-		search_hint: 'Search your city'
+		search_hint: 'Search your city',
+		get_location: 'Get Location',
+		unable_to_location: 'Unable to retrive your location',
+		not_browser_support: 'Geolocation is not supportet by you browser',
+		locating: 'Locating...'
 	},
 	about: {
 		title1: 'About the MyForecast site',

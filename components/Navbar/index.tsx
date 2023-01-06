@@ -29,7 +29,7 @@ interface Props {
 const drawerWidth = 240;
 
 const Navbar = (props: Props) => {
-	const { t, handleLocaleChange, router } = useLocale();
+	const { t, handleLocaleChange, router, locale } = useLocale();
 
 
 	const { window } = props;
@@ -116,12 +116,20 @@ const Navbar = (props: Props) => {
 						</Link>
 
 					</Box>
-					<select
-						onChange={handleLocaleChange} value={router.locale}
+					<Select
+						sx={{ color: '#fff', marginLeft: 1 }}
+						variant="standard"
+						labelId="label"
+						id="standard"
+						value={locale}
+						onChange={handleLocaleChange}
+						label={locale}
 					>
-						<option value='en'>EN</option>
-						<option value='uk'>UA</option>
-					</select>
+
+						<MenuItem value='en'>EN</MenuItem>
+						<MenuItem value='uk'>UA</MenuItem>
+					</Select>
+
 				</Toolbar>
 			</AppBar>
 			<Box component="nav">

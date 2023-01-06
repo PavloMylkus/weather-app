@@ -5,7 +5,8 @@ import Search from "../components/Search";
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { Box, Typography, LinearProgress } from "@mui/material";
 import { useSearchData } from "../hooks/useSearchData";
-
+import Button from '@mui/material/Button';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useLocale } from "../hooks/useLocale";
 
 
@@ -23,23 +24,17 @@ const Home = () => {
 
 	const getLocation = () => {
 		if (!navigator.geolocation) {
-			setStatus('Geolocation is not supportet by you browser');
+			setStatus(t.home.not_browser_support);
 		} else {
-			setStatus('Locating...');
+			setStatus(t.home.locating);
 			navigator.geolocation.getCurrentPosition((position) => {
 				setStatus('');
-				setCoord(
-					{
-						value: `${position.coords.latitude} ${position.coords.longitude}`,
-						label: 'Lviv'
-					}
-				)
 				handleOnSearch({
 					value: `${position.coords.latitude} ${position.coords.longitude}`,
 					label: ''
 				})
 			}, () => {
-				setStatus('Unable to retrive your location ')
+				setStatus(t.home.unable_to_location)
 			})
 		}
 
@@ -53,8 +48,15 @@ const Home = () => {
 				<LinearProgress sx={{ marginTop: 1 }} color="inherit" />
 			}
 
-			{!currentWeather && !forecast && !loading && <Box sx={{ color: 'gray', textAlign: 'center', marginTop: 8 }}>
-				<button onClick={getLocation}>Get Location</button>
+			{!currentWeather && !forecast && !loading && <Box
+				sx={{
+					color: 'gray',
+					textAlign: 'center',
+					marginTop: 8
+				}}>
+				<Button onClick={getLocation} variant="outlined" startIcon={<LocationOnIcon />}>
+					{t.home.get_location}
+				</Button>
 				<p>{status}</p>
 				{/* {coord && <p>Latitude: {coord}</p>} */}
 				<TravelExploreIcon sx={{ fontSize: 180 }} />
