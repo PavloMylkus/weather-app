@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Head from "next/head";
 import CurrentWeather from "../components/CurrentWeather";
 import Forecast from "../components/Forecast";
 import Search from "../components/Search";
@@ -48,6 +49,10 @@ const Home = () => {
 
 	return (
 		<Box sx={{ marginTop: 8, marginBottom: 4 }}>
+			<Head>
+				<title>{t.title.titleHome}</title>
+				<meta name="description" content={t.title.descriptionHome} />
+			</Head>
 			<Search handleOnSearch={handleOnSearch} />
 			{
 				loading &&

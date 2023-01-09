@@ -3,7 +3,7 @@ import React from "react"
 import { styled } from '@mui/material/styles';
 import Link from "next/link";
 import { useLocale } from "../../hooks/useLocale";
-
+import Head from "next/head";
 
 const About = () => {
 	const { t } = useLocale()
@@ -18,6 +18,10 @@ const About = () => {
 
 	return (
 		<Box sx={{ marginTop: 12 }}>
+			<Head>
+				<title>{t.title.titleContact}</title>
+				<meta name="description" content={t.title.descriptionContact} />
+			</Head>
 			<Paper sx={{ padding: 2 }}>
 				<BoxContainer>
 					<Typography component='h1' variant="h5">{t.contact.title}</Typography>

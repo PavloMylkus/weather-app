@@ -2,6 +2,7 @@ import { Box, Paper, Typography } from "@mui/material";
 import React from "react"
 import { styled } from '@mui/material/styles';
 import { useLocale } from "../../hooks/useLocale";
+import Head from "next/head";
 
 const About = () => {
 	const { t } = useLocale()
@@ -16,6 +17,10 @@ const About = () => {
 
 	return (
 		<Box sx={{ marginTop: 12 }}>
+			<Head>
+				<title>{t.title.titleAbout}</title>
+				<meta name="description" content={t.title.descriptionAbout} />
+			</Head>
 			<Paper sx={{ padding: 2 }}>
 				<BoxContainer>
 					<Typography component='h1' variant="h6">{t.about.title1}</Typography>

@@ -35,6 +35,7 @@ export default {
 		li1: 'IP addresses;',
 		li2: 'cookie files;',
 		li3: 'parameters and settings of Internet browsers.',
+		li4: 'longitude and latitude when granting access',
 		description: 'Google Analytics codes are additionally installed on the site. The use of this service is necessary for the operational analysis of the attendance and activity of the Site Users. We also post links to the privacy policies of these services. Google Analytics privacy policy:',
 	},
 	contact: {
@@ -56,5 +57,15 @@ export default {
 	forecast: {
 		title: 'Daily forecast',
 		wind: 'Wind',
+	},
+	title: {
+		titleHome: 'Home - MyWeather',
+		descriptionHome: 'Weather in Ukraine and the world, search for your city in search or by geolocation, weather for a week',
+		titleAbout: 'About - MyWeather',
+		descriptionAbout: 'About us, where we get data and information about us',
+		titleContact: 'Contact - MyWeather',
+		descriptionContact: 'Contact the author',
+		titleUserAgree: 'User agreement - MyWeather',
+		descriptionUserAgree: 'Detailed user agreement',
 	}
 };

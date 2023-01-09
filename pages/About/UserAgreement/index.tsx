@@ -2,7 +2,7 @@ import { Box, Paper, Typography } from "@mui/material";
 import React from "react"
 import { styled } from '@mui/material/styles';
 import { useLocale } from "../../../hooks/useLocale";
-
+import Head from "next/head";
 
 const UserAgreement = () => {
 	const { t } = useLocale()
@@ -17,6 +17,10 @@ const UserAgreement = () => {
 
 	return (
 		<Box sx={{ marginTop: 12 }}>
+			<Head>
+				<title>{t.title.titleUserAgree}</title>
+				<meta name="description" content={t.title.descriptionUserAgree} />
+			</Head>
 			<Paper sx={{ padding: 2 }}>
 				<BoxContainer>
 					<Typography component='h1' variant="h4">{t.user_agreement.title1}</Typography>
@@ -36,6 +40,7 @@ const UserAgreement = () => {
 						<li>{t.user_agreement.li1}</li>
 						<li>{t.user_agreement.li2}</li>
 						<li>{t.user_agreement.li3}</li>
+						<li>{t.user_agreement.li4}</li>
 					</ul>
 					<Typography>
 						{t.user_agreement.description}
