@@ -59,13 +59,13 @@ export default {
 		wind: 'Вітер',
 	},
 	title: {
-		titleHome: 'Головна - MyWeather',
+		titleHome: 'Головна - Пошук погоди | MyForecast',
 		descriptionHome: 'Погода в Україні та світі, шукайте своє місто в пошуку або за геолокацією, погода на тиждень',
-		titleAbout: 'Про нас - MyWeather',
+		titleAbout: 'Про нас - MyForecast',
 		descriptionAbout: 'Про нас, звідки ми беремо дані та інформація про нас',
-		titleContact: "Зв'язок - MyWeather",
+		titleContact: "Зв'язок - MyForecast",
 		descriptionContact: "Зв'язок з автором",
-		titleUserAgree: 'Угода користувача - MyWeather',
+		titleUserAgree: 'Угода користувача - MyForecast',
 		descriptionUserAgree: 'Детальна угода користувача',
 	}
 };

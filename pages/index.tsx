@@ -51,7 +51,16 @@ const Home = () => {
 		<Box sx={{ marginTop: 8, marginBottom: 4 }}>
 			<Head>
 				<title>{t.title.titleHome}</title>
-				<meta name="description" content={t.title.descriptionHome} />
+				<meta name="description" content={t.title.descriptionHome} key="desc" />
+				<meta property="og:title" content={t.title.titleHome} />
+				<meta
+					property="og:description"
+					content={t.title.descriptionHome}
+				/>
+				<meta
+					property="og:image"
+					content="/action/tittle-icon.png"
+				/>
 			</Head>
 			<Search handleOnSearch={handleOnSearch} />
 			{

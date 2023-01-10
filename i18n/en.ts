@@ -59,13 +59,13 @@ export default {
 		wind: 'Wind',
 	},
 	title: {
-		titleHome: 'Home - MyWeather',
+		titleHome: 'Home - Search weather | MyForecast',
 		descriptionHome: 'Weather in Ukraine and the world, search for your city in search or by geolocation, weather for a week',
-		titleAbout: 'About - MyWeather',
+		titleAbout: 'About - MyForecast',
 		descriptionAbout: 'About us, where we get data and information about us',
-		titleContact: 'Contact - MyWeather',
+		titleContact: 'Contact - MyForecast',
 		descriptionContact: 'Contact the author',
-		titleUserAgree: 'User agreement - MyWeather',
+		titleUserAgree: 'User agreement - MyForecast',
 		descriptionUserAgree: 'Detailed user agreement',
 	}
 };
