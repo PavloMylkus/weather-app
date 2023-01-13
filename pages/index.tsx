@@ -16,7 +16,6 @@ import axios from "axios";
 const Home = () => {
 	const { t } = useLocale()
 	const [status, setStatus] = useState('');
-	const [coord, setCoord] = useState('')
 	const { handleOnSearch, forecast, currentWeather, loading } = useSearchData()
 	let now = new Date();
 
@@ -64,6 +63,7 @@ const Home = () => {
 			</Head>
 
 			<Search handleOnSearch={handleOnSearch} />
+			{/* <SearchSelect /> */}
 			{
 				loading &&
 				<LinearProgress sx={{ marginTop: 1 }} color="inherit" />

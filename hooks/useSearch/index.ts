@@ -38,6 +38,9 @@ export const useSearch = (handleOnSearch: any) => {
 	const handleOnChange = (searchData: any) => {
 		setSearch(searchData);
 		handleOnSearch(searchData)
+		const city = searchData.label.split(',')[0].match(/\S/g).join('')
+		const coord = searchData.value.split(' ').join(',')
+		router.push('/', `/weather/${city}/${coord}`, { shallow: true })
 	}
 	return {
 		handleOnChange,
