@@ -62,6 +62,7 @@ const Home = () => {
 					content="/action/tittle-icon.png"
 				/>
 			</Head>
+
 			<Search handleOnSearch={handleOnSearch} />
 			{
 				loading &&
