@@ -16,7 +16,7 @@ const UserAgreement = () => {
 	}));
 
 	return (
-		<Box sx={{ marginTop: 12 }}>
+		<Box sx={{ marginTop: 3 }}>
 			<Head>
 				<title>{t.title.titleUserAgree}</title>
 				<meta name="description" content={t.title.descriptionUserAgree} />

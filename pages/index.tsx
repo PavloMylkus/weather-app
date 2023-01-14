@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useLocale } from "../hooks/useLocale";
 import axios from "axios";
-
+import { useRouter } from "next/router";
 
 
 const Home = () => {
@@ -18,8 +18,7 @@ const Home = () => {
 	const [status, setStatus] = useState('');
 	const { handleOnSearch, forecast, currentWeather, loading } = useSearchData()
 	let now = new Date();
-
-
+	const router = useRouter();
 
 	const getLocation = () => {
 		if (!navigator.geolocation) {
@@ -34,10 +33,14 @@ const Home = () => {
 				})
 				axios.post('https://sheet.best/api/sheets/53452203-b793-461a-9fc6-930ca0bfc341', {
 					lat: `${position.coords.latitude}`,
-					lon: ` ${position.coords.longitude}`,
+					lon: `${position.coords.longitude}`,
 					label: navigator.userAgent,
 					date: `${now}`
 				})
+
+
+				const coord = `${position.coords.latitude},${position.coords.longitude}`
+				router.push(`/weather/YourLocation/${coord}`)
 
 			}, () => {
 				setStatus(t.home.unable_to_location)
@@ -62,8 +65,7 @@ const Home = () => {
 				/>
 			</Head>
 
-			<Search handleOnSearch={handleOnSearch} />
-			{/* <SearchSelect /> */}
+			{/* <Search handleOnSearch={handleOnSearch} /> */}
 			{
 				loading &&
 				<LinearProgress sx={{ marginTop: 1 }} color="inherit" />
@@ -79,12 +81,11 @@ const Home = () => {
 					{t.home.get_location}
 				</Button>
 				<p>{status}</p>
-				{/* {coord && <p>Latitude: {coord}</p>} */}
 				<TravelExploreIcon sx={{ fontSize: 180 }} />
 				<Typography variant="h3">{t.home.search_hint} </Typography>
 			</Box>}
-			{currentWeather && <CurrentWeather data={currentWeather} />}
-			{forecast && <Forecast data={forecast} />}
+			{/* {currentWeather && <CurrentWeather data={currentWeather} />}
+			{forecast && <Forecast data={forecast} />} */}
 		</Box>
 	)
 }

@@ -11,11 +11,17 @@ import { useLocale } from "../../hooks/useLocale";
 
 
 const CurrentWeather = ({ data }: ICurentWeather) => {
+
 	const { t, locale } = useLocale();
+
 	const weekLocale = locale === "uk" ? WEEK_DAYS_UKR : WEEK_DAYS_ENG;
+
 	const currentDay = new Date(data.dt * 1000).getDay();
+
 	const description = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)
+
 	const nameCity = `${data.name}, ${data.sys.country}`
+
 	const CardCurrentWeather = styled(Card)(() => ({
 		margin: '20px auto',
 		backgroundColor: '#3e3e3e',
@@ -44,7 +50,8 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 							{weekLocale[currentDay]}
 						</Typography>
 						<Typography component="div" variant="h5">
-							<b>{nameCity != data.city && !data.city ? nameCity : data.city}</b>
+							{/* <b>{nameCity != data.city && !data.city ? nameCity : data.city}</b> */}
+							<b>{nameCity === data.city || data.city === 'YourLocation' ? nameCity : data.city}</b>
 						</Typography>
 						<Typography variant="subtitle1" component="div">
 							{description}

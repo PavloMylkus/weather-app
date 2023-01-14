@@ -3,13 +3,14 @@ import { GEO_API_URL, geoApiOptions } from "../../pages/api/api";
 import { useRouter } from "next/router";
 
 
-export const useSearch = (handleOnSearch: any) => {
-	const [search, setSearch] = useState(null)
+export const useSearch = () => {
+	const [search, setSearch] = useState(null);
 	const router = useRouter();
 	const { locale } = router;
 	const loc = locale === 'en' ? 'en' : 'ru';
 
 	const loadOptions = (inputValue: string) => {
+
 		return new Promise<any>((resolve) => {
 			setTimeout(() => {
 				const response = fetch(
@@ -36,15 +37,15 @@ export const useSearch = (handleOnSearch: any) => {
 
 
 	const handleOnChange = (searchData: any) => {
+
 		setSearch(searchData);
-		handleOnSearch(searchData)
-		const city = searchData.label.split(',')[0].match(/\S/g).join('')
+		const city = searchData.label.split(',')[0].split(' ').join('-')
 		const coord = searchData.value.split(' ').join(',')
-		router.push('/', `/weather/${city}/${coord}`, { shallow: true })
+		router.push(`/weather/${city}/${coord}`)
 	}
 	return {
 		handleOnChange,
 		loadOptions,
-		search
+		search,
 	}
 }

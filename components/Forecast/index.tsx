@@ -13,14 +13,15 @@ const Forecast = ({ data }: IForecast) => {
 	const forecast = data.list.map((item) => {
 		const date = item.dt_txt.split(' ')
 		const dayInWeek = new Date(date[0]).getDay();
-
 		return dayInWeek
 	})
 	const daysForecast = Array.from(new Set(forecast));
 
 
 
+
 	const list = daysForecast.map((item, idx) => {
+
 		return (
 			<Box key={idx}>
 				<ForecastForDays

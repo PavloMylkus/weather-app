@@ -17,7 +17,7 @@ const About = () => {
 	}));
 
 	return (
-		<Box sx={{ marginTop: 12 }}>
+		<Box sx={{ marginTop: 3 }}>
 			<Head>
 				<title>{t.title.titleContact}</title>
 				<meta name="description" content={t.title.descriptionContact} />
