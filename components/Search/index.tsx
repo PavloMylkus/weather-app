@@ -5,7 +5,7 @@ import { useSearch } from "../../hooks/useSearch";
 
 const Search = ({ handleOnSearch }: any) => {
 	const { t } = useLocale()
-	const { search, handleOnChange, loadOptions } = useSearch(handleOnSearch)
+	const { search, handleOnChange, loadOptions } = useSearch()
 
 
 
