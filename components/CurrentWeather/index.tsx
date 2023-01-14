@@ -8,6 +8,7 @@ import { ICurentWeather } from "../../models";
 import { WEEK_DAYS_ENG, WEEK_DAYS_UKR } from "../../const";
 import { styled } from '@mui/material/styles';
 import { useLocale } from "../../hooks/useLocale";
+import Image from "next/image";
 
 
 const CurrentWeather = ({ data }: ICurentWeather) => {
@@ -58,12 +59,13 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 						</Typography>
 					</CardContent>
 					<Box>
-						<CardMedia
-							component="img"
-							sx={{ width: '100%', padding: 2 }}
-							image={`/action/icons/${data.weather[0].icon}.png`}
-							alt="weather"
-						/>
+						<Image
+							style={{ padding: 15 }}
+							src={`/action/icons/${data.weather[0].icon}.png`}
+							alt={description}
+							height={112}
+							width={112} />
+
 					</Box>
 
 				</Box>

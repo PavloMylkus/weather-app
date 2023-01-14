@@ -67,5 +67,10 @@ export default {
 		descriptionContact: "Зв'язок з автором",
 		titleUserAgree: 'Угода користувача - MyForecast',
 		descriptionUserAgree: 'Детальна угода користувача',
+		titleCity: 'Погода в місті ',
+		descriptionCity: {
+			desc1: 'Погода в місті',
+			desc2: 'Детальний прогноз погоди та метеодані. ',
+		}
 	}
 };

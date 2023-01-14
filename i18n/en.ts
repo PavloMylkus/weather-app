@@ -67,5 +67,10 @@ export default {
 		descriptionContact: 'Contact the author',
 		titleUserAgree: 'User agreement - MyForecast',
 		descriptionUserAgree: 'Detailed user agreement',
+		titleCity: 'Weather in the city of ',
+		descriptionCity: {
+			desc1: 'Weather in the city of',
+			desc2: 'Detailed weather forecast and meteorological data.',
+		}
 	}
 };

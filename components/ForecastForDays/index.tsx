@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import { WEEK_DAYS_ENG, WEEK_DAYS_UKR } from "../../const";
 import Tooltip from '@mui/material/Tooltip';
 import { useLocale } from "../../hooks/useLocale";
+import Image from "next/image";
 
 type Props = {
 	day: any;
@@ -21,9 +22,9 @@ const ForecastForDays: React.FC<Props> = ({ data, day }) => {
 	const { t, locale } = useLocale()
 	const weekLocale = locale === "uk" ? WEEK_DAYS_UKR : WEEK_DAYS_ENG;
 
-	const Image = styled('img')(() => ({
-		maxWidth: '50px'
-	}));
+	// const Image = styled('img')(() => ({
+	// 	maxWidth: '50px'
+	// }));
 
 	return (
 		<>
@@ -64,7 +65,11 @@ const ForecastForDays: React.FC<Props> = ({ data, day }) => {
 											</Typography>
 										</Grid>
 										<Grid item xs>
-											<Image src={`/action/icons/${item.weather[0].icon}.png`} alt="weather" />
+											<Image
+												src={`/action/icons/${item.weather[0].icon}.png`}
+												alt={item.weather[0].description}
+												width={50}
+												height={50} />
 										</Grid>
 										<Grid item xs>
 											<Tooltip
