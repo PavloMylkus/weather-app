@@ -64,7 +64,14 @@ const Home = () => {
 					content="/action/tittle-icon.png"
 				/>
 			</Head>
-			<Script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8227519649275749" />
+
+			<Script
+				id="Adsense-id"
+				data-ad-client="ca-pub-8227519649275749"
+				async={true}
+				strategy="beforeInteractive"
+				src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+			/>
 			{/* <Search handleOnSearch={handleOnSearch} /> */}
 			{
 				loading &&
