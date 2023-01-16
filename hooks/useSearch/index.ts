@@ -14,7 +14,7 @@ export const useSearch = () => {
 		return new Promise<any>((resolve) => {
 			setTimeout(() => {
 				const response = fetch(
-					`${GEO_API_URL}/cities?minPopulation=100&namePrefix=${inputValue}&languageCode=${loc}`,
+					`${GEO_API_URL}/cities?minPopulation=100&namePrefix=${inputValue}&languageCode=en`,
 					geoApiOptions)
 					.then(response => response.json())
 					.then(response => {
