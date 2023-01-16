@@ -11,7 +11,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useLocale } from "../hooks/useLocale";
 import axios from "axios";
 import { useRouter } from "next/router";
-
+import Script from 'next/script'
 
 const Home = () => {
 	const { t } = useLocale()
@@ -64,7 +64,7 @@ const Home = () => {
 					content="/action/tittle-icon.png"
 				/>
 			</Head>
-
+			<Script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8227519649275749" />
 			{/* <Search handleOnSearch={handleOnSearch} /> */}
 			{
 				loading &&
