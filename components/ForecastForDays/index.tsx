@@ -5,7 +5,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
 import { IList } from "../../models";
 import Grid from '@mui/material/Grid';
 import { WEEK_DAYS_ENG, WEEK_DAYS_UKR } from "../../const";
@@ -16,26 +15,29 @@ import Image from "next/image";
 type Props = {
 	day: any;
 	data: IList[];
+	daysForecastDate: Array<string>
 };
 
-const ForecastForDays: React.FC<Props> = ({ data, day }) => {
+const ForecastForDays: React.FC<Props> = ({ data, day, daysForecastDate }) => {
 	const { t, locale } = useLocale()
 	const weekLocale = locale === "uk" ? WEEK_DAYS_UKR : WEEK_DAYS_ENG;
 
-	// const Image = styled('img')(() => ({
-	// 	maxWidth: '50px'
-	// }));
+	const publishedDate = new Date(daysForecastDate[day]).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" }).split(',')
+
 
 	return (
 		<>
 			<Accordion>
 				<AccordionSummary
+					sx={{ height: '50px' }}
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
 					id='f'
 				>
-					<Typography component="h3" variant="h6">{weekLocale[day]}</Typography>
-
+					<Typography sx={{ width: '160px' }} component="h3" variant="h6">{weekLocale[day]}</Typography>
+					<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+						<Typography component="span" variant="body1">{publishedDate}</Typography>
+					</Box>
 				</AccordionSummary>
 				<AccordionDetails>
 					{data.map((item, idx) => {

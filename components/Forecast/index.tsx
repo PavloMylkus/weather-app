@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Box from '@mui/material/Box';
 import { IForecast } from "../../models";
 import Typography from '@mui/material/Typography';
@@ -10,25 +10,26 @@ import { useLocale } from "../../hooks/useLocale";
 const Forecast = ({ data }: IForecast) => {
 	const { t } = useLocale()
 
-	const forecast = data.list.map((item) => {
+	const forecastDayNumbers = data.list.map((item) => {
 		const date = item.dt_txt.split(' ')
 		const dayInWeek = new Date(date[0]).getDay();
 		return dayInWeek
 	})
-	const daysForecast = Array.from(new Set(forecast));
+	const daysForecastNumber = Array.from(new Set(forecastDayNumbers));
 
+	const dateOfDaysForecast = data.list.map((item) => {
+		return item.dt_txt.split(' ')[0]
+	})
+	const daysForecastDate = Array.from(new Set(dateOfDaysForecast));
 
-
-
-	const list = daysForecast.map((item, idx) => {
-
+	const list = daysForecastNumber.map((item, idx) => {
 		return (
 			<Box key={idx}>
 				<ForecastForDays
+					daysForecastDate={daysForecastDate}
 					data={data.list}
 					day={item} />
 			</Box >
-
 		)
 	})
 

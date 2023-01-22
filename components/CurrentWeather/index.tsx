@@ -24,7 +24,7 @@ const CurrentWeather = ({ data }: ICurentWeather) => {
 	const nameCity = `${data.name}, ${data.sys.country}`
 
 	const CardCurrentWeather = styled(Card)(() => ({
-		margin: '20px auto',
+		margin: '12px auto',
 		backgroundColor: '#3e3e3e',
 		backgroundImage: `url(/action/backgrounds/${data.weather[0].main}.jpg)`,
 		backgroundSize: 'cover',

@@ -23,7 +23,8 @@
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"pages/api/api.js"
+		"pages/api/api.js",
+		"pages/sitemap.xml.js"
 	],
 	"exclude": [
 		"node_modules"
