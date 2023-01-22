@@ -6,15 +6,12 @@ const Sitemap = () => { };
 export const getServerSideProps = ({ res }) => {
 
 
-	const baseUrl = {
-		development: "http://localhost:3000",
-		production: "https://myforecast.vercel.app",
-	}[process.env.NODE_ENV];
+
 
 	const staticPages = fs
 		.readdirSync("pages")
 		.map((staticPagePath) => {
-			return `${baseUrl}/${staticPagePath}`;
+			return `https://myforecast.vercel.app/${staticPagePath}`;
 		});
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
