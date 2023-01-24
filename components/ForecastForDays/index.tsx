@@ -15,15 +15,15 @@ import Image from "next/image";
 type Props = {
 	day: any;
 	data: IList[];
-	daysForecastDate: Array<string>
+	daysForecastDate: string
 };
 
 const ForecastForDays: React.FC<Props> = ({ data, day, daysForecastDate }) => {
 	const { t, locale } = useLocale()
 	const weekLocale = locale === "uk" ? WEEK_DAYS_UKR : WEEK_DAYS_ENG;
 
-	const publishedDate = new Date(daysForecastDate[day]).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" }).split(',')
-
+	const publishedDate = new Date(daysForecastDate).toLocaleDateString(locale, { day: "numeric", month: "long", year: "numeric" }).split(',')
+	// console.log(publishedDate);
 
 	return (
 		<>

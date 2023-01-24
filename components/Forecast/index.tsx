@@ -10,25 +10,19 @@ import { useLocale } from "../../hooks/useLocale";
 const Forecast = ({ data }: IForecast) => {
 	const { t } = useLocale()
 
-	const forecastDayNumbers = data.list.map((item) => {
-		const date = item.dt_txt.split(' ')
-		const dayInWeek = new Date(date[0]).getDay();
-		return dayInWeek
-	})
-	const daysForecastNumber = Array.from(new Set(forecastDayNumbers));
-
 	const dateOfDaysForecast = data.list.map((item) => {
 		return item.dt_txt.split(' ')[0]
 	})
 	const daysForecastDate = Array.from(new Set(dateOfDaysForecast));
 
-	const list = daysForecastNumber.map((item, idx) => {
+	const list = daysForecastDate.map((item, idx) => {
+		const day = new Date(item).getDay()
 		return (
 			<Box key={idx}>
 				<ForecastForDays
-					daysForecastDate={daysForecastDate}
+					daysForecastDate={item}
 					data={data.list}
-					day={item} />
+					day={day} />
 			</Box >
 		)
 	})
