@@ -17,9 +17,6 @@ const Forecast = ({ data }: IForecast) => {
 	})
 	const daysForecast = Array.from(new Set(forecast));
 
-
-
-
 	const list = daysForecast.map((item, idx) => {
 
 		return (

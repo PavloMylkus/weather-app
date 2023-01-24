@@ -14,8 +14,9 @@ const Layout = ({ children }: IProps) => {
 
 	return (
 		<>
-			<Navbar />
-			<Container maxWidth="md" sx={{ marginTop: 10, marginBottom: 5, minHeight: '80vh' }}>
+
+			<Container maxWidth="lg" sx={{ marginBottom: 5, minHeight: '80vh' }}>
+				<Navbar />
 				<Search />
 				{children}
 			</Container>

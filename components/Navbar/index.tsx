@@ -40,8 +40,11 @@ const Navbar = (props: Props) => {
 	};
 	const drawer = (
 		<Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-			<Typography variant="h6" sx={{ my: 2 }}>
-				<Link href='/'>MyForecast</Link>
+			<Typography variant="h6" sx={{ color: '#F58025', my: 2 }}>
+				<Link style={{ display: 'flex', alignItems: 'center' }} href='/'>
+					<img src="/action/tittle-icon.png" style={{ width: '50px' }} />
+					MyForecast
+				</Link>
 			</Typography>
 			<Divider />
 			<List>
@@ -73,12 +76,14 @@ const Navbar = (props: Props) => {
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 	return (
-		<Box sx={{ display: 'flex' }}>
+		<Box sx={{
+			display: 'flex', justifyContent: 'space-between', mt: 1, mb: 1
+		}}>
 			<CssBaseline />
 			<AppBar
-				sx={{ background: '#29547f' }}
+				sx={{ background: 'transparent', boxShadow: 'none', position: 'relative', }}
 				component="nav">
-				<Toolbar>
+				<Toolbar sx={{ padding: 0 }}>
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
@@ -91,9 +96,12 @@ const Navbar = (props: Props) => {
 					<Typography
 						variant="h6"
 						component="div"
-						sx={{ flexGrow: 1, display: { sm: 'block' } }}
+						sx={{ color: '#fff', fontWeight: 800, flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
 					>
-						<Link href='/'>MyForecast</Link>
+						<Link style={{ display: 'flex', alignItems: 'center' }} href='/'>
+							<img src="/action/tittle-icon.png" style={{ width: '50px', marginRight: '8px' }} />
+							MyForecast
+						</Link>
 					</Typography>
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 
@@ -149,7 +157,7 @@ const Navbar = (props: Props) => {
 					{drawer}
 				</Drawer>
 			</Box>
-		</Box>
+		</Box >
 	)
 };
 

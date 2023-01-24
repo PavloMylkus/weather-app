@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import Head from "next/head";
-import CurrentWeather from "../components/CurrentWeather";
-import Forecast from "../components/Forecast";
-import Search from "../components/Search";
+
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { Box, Typography, LinearProgress } from "@mui/material";
 import { useSearchData } from "../hooks/useSearchData";
