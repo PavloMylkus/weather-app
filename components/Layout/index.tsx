@@ -15,12 +15,12 @@ const Layout = ({ children }: IProps) => {
 	return (
 		<>
 
-			<Container maxWidth="lg" sx={{ marginBottom: 5, minHeight: '80vh' }}>
+			<Container maxWidth="lg" sx={{ marginBottom: 5, minHeight: '90vh' }}>
 				<Navbar />
 				<Search />
 				{children}
 			</Container>
-			<Footer />
+			<Footer copyright="2023" />
 		</>
 	)
 };

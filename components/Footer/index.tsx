@@ -1,38 +1,18 @@
-import React from "react"
-import { styled } from '@mui/material/styles';
-import { Box, Paper, Typography } from "@mui/material";
-import { relative } from "node:path/win32";
+import React from 'react';
+;
 
+interface FooterProps {
+	copyright: string;
+}
 
-const Footer = () => {
-
-	const FooterContainer = styled('footer')(() => ({
-		width: '100%',
-		position: 'relative',
-		bottom: 0,
-		padding: 10,
-		background: 'grey',
-		textAlign: 'center'
-	}));
-	const Links = styled('a')(() => ({
-		color: 'blue'
-	}));
+const Footer: React.FC<FooterProps> = ({ copyright }) => {
 	return (
-		<FooterContainer>
-			<Box>
-				<Typography>
-					Create by <Links href="https://pm-links.w3spaces.com/">
-						@pavlmylkus
-					</Links>
-				</Typography>
-				<Typography >
-					API <Links href="https://openweathermap.org/api">
-						OpenWeather
-					</Links>
-				</Typography>
-			</Box>
-		</FooterContainer>
-	)
+		<footer className="footer">
+			<p className="footer-text">
+				<a href="/About">About</a> | <a href="/Contact">Contact</a> | {copyright}
+			</p>
+		</footer>
+	);
 };
 
 export default Footer;

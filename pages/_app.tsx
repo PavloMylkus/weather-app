@@ -1,11 +1,29 @@
 import '../styles/globals.css'
+import Router from "next/router";
+import { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 import Head from "next/head";
 import Script from 'next/script'
-
+import { LinearProgress } from "@mui/material";
+import '../styles/Footer.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
+
+	const [isLoading, setIsLoading] = useState(false);
+
+	useEffect(() => {
+		Router.events.on("routeChangeStart", () => {
+			setIsLoading(true);
+		});
+		Router.events.on("routeChangeComplete", () => {
+			setIsLoading(false);
+		});
+		Router.events.on("routeChangeError", () => {
+			setIsLoading(false);
+		});
+	}, [Router]);
+
 	return (<>
 		<Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-QMYG97KQ9E" />
 		<Script
@@ -35,6 +53,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 			</Head>
 
 			<main>
+				<LinearProgress sx={{ marginTop: 1, opacity: isLoading ? '1' : '0' }} color="inherit" />
 				<Component {...pageProps} />
 			</main>
 		</Layout>
