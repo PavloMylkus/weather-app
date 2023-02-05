@@ -53,7 +53,7 @@ const ForecastForDays: React.FC<Props> = ({ data, day, daysForecastDate }) => {
 										justifyContent: 'space-between',
 
 									}}>
-									<Grid sx={{ alignItems: 'center' }} container spacing={3}>
+									<Grid sx={{ alignItems: 'center' }} container spacing={1}>
 										<Grid item xs>
 											{/* time */}
 											<Typography >
